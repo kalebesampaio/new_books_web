@@ -9,8 +9,10 @@ export default createGlobalStyle`
     }
 
     :root{
+        --brand1: #623CEA;
+        --brand2: #311E75;
         --grey0: #0B0D0D;
-        --grey1: #212529;
+        --grey1: #121214;
         --grey2: #495057;
         --grey3: #868E96;
         --grey4: #ADB5BD;
