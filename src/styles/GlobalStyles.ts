@@ -7,6 +7,10 @@ export default createGlobalStyle`
         box-sizing: border-box;
         outline: 0;
     }
+    section{
+        height: 89vh;
+        width: 100%;
+    }
 
     :root{
         --brand1: #623CEA;
