@@ -7,17 +7,13 @@ export default createGlobalStyle`
         box-sizing: border-box;
         outline: 0;
     }
-    section{
-        height: 89vh;
-        width: 100%;
-    }
 
     :root{
         --brand1: #623CEA;
         --brand2: #311E75;
         --grey0: #0B0D0D;
         --grey1: #121214;
-        --grey2: #495057;
+        --grey2: #212529;
         --grey3: #868E96;
         --grey4: #ADB5BD;
         --grey5: #CED4DA;
@@ -49,6 +45,9 @@ export default createGlobalStyle`
         --random11: #5700E3;
         --random12: #30007D; 
     }
+    body{
+        min-height: 100vh;
+    }
 
     button {
         cursor: pointer;
@@ -65,10 +64,6 @@ export default createGlobalStyle`
 
     ul {
         list-style: none;
-    }
-
-    main {
-        margin-top: 80px;
     }
 
 `;
