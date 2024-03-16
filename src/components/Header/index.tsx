@@ -32,7 +32,7 @@ export const Header = () => {
       <HeaderContainer>
         <HeaderMobileArea>
           <LogoTipo>
-            <LogoTipoImg src={Logo} alt="" />
+            <LogoTipoImg src={Logo} alt="Logo" />
           </LogoTipo>
           {isWide && (
             <ButtonHeader

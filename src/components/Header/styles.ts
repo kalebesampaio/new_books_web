@@ -28,14 +28,14 @@ export const HeaderMobileArea = styled.div`
   justify-content: space-between;
 `;
 
-export const LogoTipo = styled.div`
+export const LogoTipo = styled.figure`
   display: flex;
   gap: 0.5rem;
   align-items: center;
 `;
 
 export const LogoTipoImg = styled.img`
-  max-width: 140px;
+  max-width: 150px;
   cursor: pointer;
 `;
 export const ButtonHeader = styled.button`
