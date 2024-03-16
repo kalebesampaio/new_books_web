@@ -10,12 +10,25 @@ import {
 import background from "../../../public/background.png";
 import { IoIosArrowBack } from "react-icons/io";
 import { FormStyles } from "../../components/FormLogin/styles";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export const LoginPage = () => {
+  const [viewPass, setViewPass] = useState(false);
+  const navigate = useNavigate();
   return (
     <LoginStyles>
       <NavReturn>
-        <LinkReturn>
+        <LinkReturn
+          onClick={() => {
+            if (window.history.state && window.history.state.idx > 0) {
+              navigate(-1);
+            } else {
+              navigate("/", { replace: true });
+            }
+          }}
+        >
           <IoIosArrowBack /> Voltar
         </LinkReturn>
       </NavReturn>
@@ -33,11 +46,27 @@ export const LoginPage = () => {
             <label htmlFor="email">Email *</label>
             <input type="text" placeholder="Seu email" id="email" />
             <label htmlFor="password">Senha *</label>
-            <input type="password" placeholder="Sua senha" id="password" />
+            <section>
+              {viewPass ? (
+                <>
+                  <FaRegEyeSlash onClick={() => setViewPass(!viewPass)} />
+                  <input type="text" placeholder="Sua senha" id="password" />
+                </>
+              ) : (
+                <>
+                  <FaRegEye onClick={() => setViewPass(!viewPass)} />
+                  <input
+                    type="password"
+                    placeholder="Sua senha"
+                    id="password"
+                  />
+                </>
+              )}
+            </section>
             <button>Entrar</button>
             <div>
-              <a href="">Esqueceu a senha?</a>
-              <a href="">Não tem conta?</a>
+              <Link to={"/"}>Esqueceu a senha?</Link>
+              <Link to={"/register"}>Não tem conta?</Link>
             </div>
           </FormStyles>
         </ContainerForm>
