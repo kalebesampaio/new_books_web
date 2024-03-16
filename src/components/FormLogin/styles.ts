@@ -77,6 +77,25 @@ export const FormStyles = styled.form`
     }
   }
 
+  section {
+    width: 90%;
+    @media (max-width: 991px) {
+      width: 100%;
+    }
+    position: relative;
+    input {
+      width: 100%;
+    }
+
+    svg {
+      position: absolute;
+      bottom: 50%;
+      right: 5%;
+      cursor: pointer;
+      font-size: 1.3rem;
+    }
+  }
+
   div {
     width: 90%;
     display: flex;
