@@ -6,11 +6,13 @@ export default createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         outline: 0;
+        list-style: none;
     }
 
     :root{
         --brand1: #623CEA;
         --brand2: #311E75;
+        --brand3: #040c30;
         --grey0: #0B0D0D;
         --grey1: #121214;
         --grey2: #212529;
@@ -47,6 +49,7 @@ export default createGlobalStyle`
     }
     body{
         min-height: 100vh;
+        background-color: var(--grey1);
     }
 
     button {
@@ -62,8 +65,6 @@ export default createGlobalStyle`
         text-decoration: none;
     }
 
-    ul {
-        list-style: none;
-    }
+ 
 
 `;
