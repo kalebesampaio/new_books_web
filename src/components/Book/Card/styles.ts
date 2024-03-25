@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 export const CardBookStyles = styled.li`
   width: 175px;
-  margin-left: 30px;
-  background-color: black;
+
   div {
     width: 100%;
     height: 238px;
