@@ -7,6 +7,7 @@ export default createGlobalStyle`
         box-sizing: border-box;
         outline: 0;
         list-style: none;
+        font-family: "IBM Plex Sans", sans-serif;
     }
 
     :root{
@@ -24,6 +25,8 @@ export default createGlobalStyle`
         --grey8: #F1F3F5;
         --grey9: #F8F9FA;
         --grey10: #FDFDFD;
+        --grey11: #7b7b7b;
+        --grey12: #cccccc;
         --whiteFixed: #FFFFFF;
 
         --alert1: #CD2B31;
@@ -50,6 +53,7 @@ export default createGlobalStyle`
     body{
         min-height: 100vh;
         background-color: var(--grey1);
+       
     }
 
     button {
