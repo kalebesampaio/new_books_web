@@ -24,7 +24,6 @@ export const FooterContainer = styled.div`
 export const FooterText = styled.span`
   font-size: 1rem;
   font-weight: 600;
-  font-family: "IBM Plex Sans", sans-serif;
   color: var(--grey9);
   @media (max-width: 400px) {
     font-size: 0.8rem;

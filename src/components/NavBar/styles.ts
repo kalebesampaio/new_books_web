@@ -44,7 +44,6 @@ export const NavItem = styled.li`
   a {
     color: var(--grey3);
     font-weight: 600;
-    font-family: "IBM Plex Sans", sans-serif;
     margin-right: 4px;
   }
   &:hover {
