@@ -8,6 +8,7 @@ export default createGlobalStyle`
         outline: 0;
         list-style: none;
         font-family: "IBM Plex Sans", sans-serif;
+        scroll-behavior: smooth;
     }
 
     :root{

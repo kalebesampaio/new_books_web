@@ -8,7 +8,7 @@ export const CardBook = () => {
       <div>
         <Link to="/">
           <img
-            src="https://cover.nexoscans.com/wp-content/uploads/2022/05/Release-That-Witch-175x238.jpg"
+            src="https://cover.nexoscans.com/wp-content/uploads/2022/05/Release-That-Witch.jpg"
             alt=""
           />
         </Link>
