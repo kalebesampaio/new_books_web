@@ -117,7 +117,7 @@ export const BookPage = () => {
         <DisqusComments
           post={{
             id: "dsq-count-scr",
-            title: "//newbooks-1.disqus.com/count.js",
+            title: "New Books",
           }}
         />
       </DisqusContainer>
