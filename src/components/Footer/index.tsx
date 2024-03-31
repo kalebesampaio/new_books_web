@@ -12,7 +12,9 @@ export const Footer = () => {
       <FooterContainer>
         <FooterText>© 2024 - Todos os direitos reservados.</FooterText>
         <ButtonFooter>
-          <IoIosArrowUp />
+          <a href={"#"}>
+            <IoIosArrowUp />
+          </a>
         </ButtonFooter>
       </FooterContainer>
     </FooterStyles>

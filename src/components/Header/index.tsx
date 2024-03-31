@@ -7,13 +7,13 @@ import {
   HeaderContainer,
   HeaderMobileArea,
   HeaderStyles,
-  Link,
   LogoTipo,
   NavbarLinks,
   LogoTipoImg,
 } from "./styles";
 import { FaBars } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 export interface MenuButtonOpen {
   open: boolean;
@@ -32,7 +32,9 @@ export const Header = () => {
       <HeaderContainer>
         <HeaderMobileArea>
           <LogoTipo>
-            <LogoTipoImg src={Logo} alt="Logo" />
+            <Link to={"/"}>
+              <LogoTipoImg src={Logo} alt="Logo" />
+            </Link>
           </LogoTipo>
           {isWide && (
             <ButtonHeader
@@ -52,10 +54,10 @@ export const Header = () => {
 export const NavLinks = (): JSX.Element => {
   return (
     <NavbarLinks>
-      <Link href={`#`}>Início</Link>
-      <Link href={`#`}>Mais Lidos</Link>
-      <Link href={`#`}>Tipos</Link>
-      <Link href={`#`}>Gêneros</Link>
+      <Link to={`/`}>Início</Link>
+      <Link to={`/`}>Mais Lidos</Link>
+      <Link to={`/`}>Tipos</Link>
+      <Link to={`/`}>Gêneros</Link>
     </NavbarLinks>
   );
 };
