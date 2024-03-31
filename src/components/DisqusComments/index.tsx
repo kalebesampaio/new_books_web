@@ -7,9 +7,9 @@ interface Props {
   };
 }
 const DisqusComments = ({ post }: Props) => {
-  const disqusShortname = "newbooks";
+  const disqusShortname = "newbooks-1";
   const disqusConfig = {
-    url: "http://localhost:5173",
+    url: "http://localhost:5173/",
     identifier: post.id,
     title: post.title,
   };
