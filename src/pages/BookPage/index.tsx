@@ -15,13 +15,22 @@ import {
   SummaryImg,
   TextContainer,
 } from "./styles";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaComments } from "react-icons/fa6";
 import { FaBookmark, FaStar } from "react-icons/fa";
 import DisqusComments from "../../components/DisqusComments";
+import { useParams } from "react-router-dom";
+import { BookContext } from "../../providers/BookProvider";
+import { reduceRating } from "../../utils/reduceRating";
 
 export const BookPage = () => {
+  const { getBook, book } = useContext(BookContext);
   const [value, setValue] = useState<number | null>(4.5);
+  const { bookId } = useParams();
+  useEffect(() => {
+    getBook(bookId!);
+  }, []);
+
   return (
     <>
       <Header />
@@ -29,15 +38,12 @@ export const BookPage = () => {
       <BookPageStyles>
         <ContainerBookInfo>
           <ContainerBookTitle>
-            <span>MANHUA</span>
-            <h1>Liberte Aquela Bruxa</h1>
+            <span>{book?.type}</span>
+            <h1>{book?.title}</h1>
           </ContainerBookTitle>
           <ContainerSummary>
             <SummaryImg>
-              <img
-                src="https://cover.nexoscans.com/wp-content/uploads/2022/05/Release-That-Witch.jpg"
-                alt=""
-              />
+              <img src={book?.cover} alt="Capa do Livro" />
             </SummaryImg>
             <SummaryContent>
               <DivRating>
@@ -53,30 +59,33 @@ export const BookPage = () => {
               </DivRating>
               <TextContainer>
                 <h5>Avaliação</h5>
-                <span>Média 4.5 / 5 - Votos totais : 302</span>
-              </TextContainer>
-              <TextContainer>
-                <h5>Visualizações</h5>
-                <span> 3.9M Visualizações</span>
-              </TextContainer>
-              <TextContainer>
-                <h5>Gênero(s)</h5>
                 <span>
-                  Ação, Aventura, Drama, Fantasia, Física, Harém, Isekai,
-                  Shounen, Sobrenatural, Sobrevivência
+                  Média{" "}
+                  {book
+                    ? reduceRating(book.assessments) / book!.assessments.length
+                    : ""}{" "}
+                  - Votos totais : {book ? book.assessments.length : ""}
                 </span>
               </TextContainer>
               <TextContainer>
+                <h5>Visualizações</h5>
+                <span> {book?.views} Visualizações</span>
+              </TextContainer>
+              <TextContainer>
+                <h5>Gênero(s)</h5>
+                <span>{book?.genres.map((gen) => `${gen}, `)}</span>
+              </TextContainer>
+              <TextContainer>
                 <h5>Tipo</h5>
-                <span> Manhua</span>
+                <span> {book?.type}</span>
               </TextContainer>
               <TextContainer>
                 <h5>Lançado em</h5>
-                <span> 2019</span>
+                <span> {book?.launched_in}</span>
               </TextContainer>
               <TextContainer>
                 <h5>Status</h5>
-                <span> Em lançamento</span>
+                <span> {book?.status}</span>
               </TextContainer>
               <TextContainer className="containerSvg">
                 <ContainerSvg>
@@ -87,22 +96,12 @@ export const BookPage = () => {
                 </ContainerSvg>
                 <ContainerSvg className="bordernone">
                   <FaBookmark />
-                  <p>2.9K Usuários favoritaram</p>
+                  <p>0 Usuários favoritaram</p>
                 </ContainerSvg>
                 <FaBookmark />
               </TextContainer>
               <TextContainer>
-                <p>
-                  Um engenheiro reencarnou em outro mundo e se tornou um
-                  príncipe. Esse lugar se assemelha muito à Idade Média
-                  Europeia, mas, ao mesmo tempo parece ser diferente. Bruxas
-                  existem de verdade e até mesmo possuem poderes mágicos!
-                  Poderes mágicos são forças de produção! Salvem as bruxas,
-                  libertem as forças de produção! Abram o mapa, lutem contra
-                  demônios, acabem com as conspirações, escalem a árvore da
-                  ciência e tecnologia e abram o caminho para o “farming
-                  hardcore”!
-                </p>
+                <p>{book?.description}</p>
               </TextContainer>
             </SummaryContent>
           </ContainerSummary>

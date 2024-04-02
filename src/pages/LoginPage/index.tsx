@@ -11,12 +11,28 @@ import background from "../../../public/background.png";
 import { IoIosArrowBack } from "react-icons/io";
 import { FormStyles } from "../../components/FormLogin/styles";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext, DataLogin } from "../../providers/AuthProvider";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { loginSchema } from "./loginSchemas";
 
 export const LoginPage = () => {
   const [viewPass, setViewPass] = useState(false);
   const navigate = useNavigate();
+  const { signIn } = useContext(AuthContext);
+
+  const onSubmit = (formData: DataLogin) => {
+    signIn(formData);
+  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(loginSchema),
+  });
   return (
     <LoginStyles>
       <NavReturn>
@@ -41,16 +57,28 @@ export const LoginPage = () => {
           </span>
         </ContainerImg>
         <ContainerForm>
-          <FormStyles>
+          <FormStyles onSubmit={handleSubmit(onSubmit)}>
             <h2>Iniciar sessão</h2>
             <label htmlFor="email">Email *</label>
-            <input type="text" placeholder="Seu email" id="email" />
+            <input
+              type="text"
+              placeholder="Seu email"
+              id="email"
+              {...register("email")}
+            />
+            <p>{errors.email?.message?.toString()}</p>
             <label htmlFor="password">Senha *</label>
             <section>
               {viewPass ? (
                 <>
                   <FaRegEyeSlash onClick={() => setViewPass(!viewPass)} />
-                  <input type="text" placeholder="Sua senha" id="password" />
+                  <input
+                    type="text"
+                    placeholder="Sua senha"
+                    id="password"
+                    {...register("password")}
+                  />
+                  <p>{errors.password?.message?.toString()}</p>
                 </>
               ) : (
                 <>
@@ -59,7 +87,9 @@ export const LoginPage = () => {
                     type="password"
                     placeholder="Sua senha"
                     id="password"
+                    {...register("password")}
                   />
+                  <p>{errors.password?.message?.toString()}</p>
                 </>
               )}
             </section>
