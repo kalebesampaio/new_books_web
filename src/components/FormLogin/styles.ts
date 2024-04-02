@@ -25,6 +25,7 @@ export const FormStyles = styled.form`
     font-family: "Inter", sans-serif;
     color: var(--grey9);
     margin-bottom: 5px;
+    margin-top: 10px;
   }
   input {
     width: 90%;
@@ -41,7 +42,7 @@ export const FormStyles = styled.form`
     border: none;
     min-height: 60px;
     padding: 12px 12px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     @media (max-width: 991px) {
       width: 100%;
     }
@@ -49,6 +50,13 @@ export const FormStyles = styled.form`
       min-height: 40px;
       border: none;
     }
+  }
+
+  p {
+    font-size: 14px;
+    font-family: "Inter", sans-serif;
+    color: var(--alert1);
+    min-height: 17px;
   }
 
   button {

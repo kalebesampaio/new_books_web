@@ -13,7 +13,7 @@ export const RouterMain = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/" element={<HomePage />} />
-      <Route path="/book" element={<BookPage />} />
+      <Route path="/book/:bookId" element={<BookPage />} />
       <Route path="/type" element={<TypePage />} />
       <Route path="/genres" element={<GenresPage />} />
       <Route path="/views" element={<ViewsPage />} />

@@ -55,9 +55,9 @@ export const NavLinks = (): JSX.Element => {
   return (
     <NavbarLinks>
       <Link to={`/`}>Início</Link>
-      <Link to={`/`}>Mais Lidos</Link>
-      <Link to={`/`}>Tipos</Link>
-      <Link to={`/`}>Gêneros</Link>
+      <Link to={`/views`}>Mais Lidos</Link>
+      <Link to={`/type`}>Tipos</Link>
+      <Link to={`/genres`}>Gêneros</Link>
     </NavbarLinks>
   );
 };

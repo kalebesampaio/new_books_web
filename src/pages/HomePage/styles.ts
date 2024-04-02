@@ -14,6 +14,9 @@ export const HomePageStyles = styled.main`
   div {
     color: var(--grey9);
   }
+  nav {
+    margin-bottom: 30px;
+  }
 `;
 export const HomeContainer = styled.div`
   width: 100%;
@@ -27,6 +30,7 @@ export const HomeContainer = styled.div`
 export const ListHeading = styled.div`
   margin-top: 50px;
   width: 100%;
+  height: 23px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,7 +45,6 @@ export const Title1 = styled.h1`
   height: 100%;
   font-size: 18px;
   font-weight: 600;
-
   color: var(--grey9);
   width: 100%;
   text-align: start;

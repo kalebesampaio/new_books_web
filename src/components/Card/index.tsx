@@ -1,11 +1,21 @@
 import { CardStyles } from "./styles";
-
-export const Card = () => {
+interface Props {
+  title: string;
+  change: React.Dispatch<React.SetStateAction<string>>;
+}
+export const Card = ({ title, change }: Props) => {
   return (
     <CardStyles>
-      <button>
-        Ação
-        <span>{"(274)"}</span>
+      <button
+        onClick={() => {
+          if (title === "Todos") {
+            change("");
+          } else {
+            change(title);
+          }
+        }}
+      >
+        {title}
       </button>
     </CardStyles>
   );

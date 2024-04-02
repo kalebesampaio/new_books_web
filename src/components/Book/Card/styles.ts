@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CardBookStyles = styled.li`
   width: 175px;
-
+  height: 294.38px;
   div {
     width: 100%;
     height: 238px;
@@ -121,8 +121,6 @@ export const AsideCardBookStyles = styled.div`
       font-weight: 600;
       margin-top: 0;
       line-height: 1.2;
-      margin-block-start: 1.67em;
-      margin-block-end: 1.67em;
       a {
         color: var(--grey12);
         &:hover {

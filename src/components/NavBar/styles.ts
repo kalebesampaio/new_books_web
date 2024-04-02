@@ -46,8 +46,17 @@ export const NavItem = styled.li`
     font-weight: 600;
     margin-right: 4px;
   }
+  button {
+    color: var(--grey3);
+    font-weight: 600;
+    margin-right: 4px;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+  }
   &:hover {
     a,
+    button,
     svg {
       transition: 0.5s;
       color: var(--whiteFixed);
