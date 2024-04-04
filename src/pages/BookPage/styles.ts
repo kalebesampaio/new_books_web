@@ -38,6 +38,24 @@ export const ContainerBookTitle = styled.div`
     color: var(--whiteFixed);
     box-sizing: border-box;
   }
+  .Manga {
+    background-color: var(--random1);
+  }
+  .Manhwa {
+    background-color: var(--random3);
+  }
+  .Manhua {
+    background-color: var(--random4);
+  }
+  .Conto {
+    background-color: var(--random6);
+  }
+  .Livro {
+    background-color: var(--random7);
+  }
+  .Gibis {
+    background-color: var(--random9);
+  }
   h1 {
     color: var(--brand1);
     font-size: 20px;

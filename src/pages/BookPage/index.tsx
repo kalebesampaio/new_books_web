@@ -24,11 +24,15 @@ import { BookContext } from "../../providers/BookProvider";
 import { reduceRating } from "../../utils/reduceRating";
 
 export const BookPage = () => {
-  const { getBook, book } = useContext(BookContext);
-  const [value, setValue] = useState<number | null>(4.5);
+  const { getBook, book, newRating } = useContext(BookContext);
+  const [value, setValue] = useState<number>(0);
   const { bookId } = useParams();
   useEffect(() => {
-    getBook(bookId!);
+    const get = async () => {
+      await getBook(bookId!);
+    };
+    get();
+    setValue(reduceRating(book?.assessments));
   }, []);
 
   return (
@@ -38,7 +42,7 @@ export const BookPage = () => {
       <BookPageStyles>
         <ContainerBookInfo>
           <ContainerBookTitle>
-            <span>{book?.type}</span>
+            <span className={`${book?.type}`}>{book?.type}</span>
             <h1>{book?.title}</h1>
           </ContainerBookTitle>
           <ContainerSummary>
@@ -51,20 +55,17 @@ export const BookPage = () => {
                   name="simple-controlled"
                   value={value}
                   onChange={(event, newValue) => {
-                    setValue(newValue);
+                    setValue(newValue!);
+                    newRating({ rating: newValue!, bookId: book!.id });
                   }}
-                  precision={0.5}
                 />
                 <p>{value}</p>
               </DivRating>
               <TextContainer>
                 <h5>Avaliação</h5>
                 <span>
-                  Média{" "}
-                  {book
-                    ? reduceRating(book.assessments) / book!.assessments.length
-                    : ""}{" "}
-                  - Votos totais : {book ? book.assessments.length : ""}
+                  Média {book ? reduceRating(book.assessments) : ""} - Votos
+                  totais : {book ? book.assessments.length : ""}
                 </span>
               </TextContainer>
               <TextContainer>

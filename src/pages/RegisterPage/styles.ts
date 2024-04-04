@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const RegisterStyles = styled.main`
   width: 100%;
-  min-height: 100vh;
 
   display: flex;
   align-items: center;
@@ -34,5 +33,10 @@ export const RegisterContainer = styled.div`
   }
   @media (max-width: 650px) {
     min-height: 700px;
+  }
+  form {
+    h2 {
+      max-width: 100%;
+    }
   }
 `;

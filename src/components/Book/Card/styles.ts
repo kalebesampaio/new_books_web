@@ -34,6 +34,24 @@ export const CardBookStyles = styled.li`
       margin-right: 7px;
       color: var(--whiteFixed);
     }
+    .Manga {
+      background-color: var(--random1);
+    }
+    .Manhwa {
+      background-color: var(--random3);
+    }
+    .Manhua {
+      background-color: var(--random4);
+    }
+    .Conto {
+      background-color: var(--random6);
+    }
+    .Livro {
+      background-color: var(--random7);
+    }
+    .Gibis {
+      background-color: var(--random9);
+    }
   }
   img {
     max-width: 100%;

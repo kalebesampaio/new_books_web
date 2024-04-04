@@ -24,7 +24,7 @@ import { mostViewed } from "../../utils/mostViewed";
 
 export const HomePage = () => {
   const { getBooks, books } = useContext(BookContext);
-  const [sli, setSli] = useState<number[]>([0, 9]);
+  const [sli, setSli] = useState<number[]>([0, 12]);
 
   useEffect(() => {
     getBooks();
@@ -78,7 +78,7 @@ export const HomePage = () => {
               <></>
             )}
             <AsideFooter>
-              <Link to="/">Mostrar os mais lidos</Link>
+              <Link to="/views">Mostrar os mais lidos</Link>
             </AsideFooter>
           </Aside>
         </HomeContainer>
