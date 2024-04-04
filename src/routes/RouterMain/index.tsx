@@ -9,6 +9,7 @@ import { ViewsPage } from "../../pages/ViewsPage";
 import { PrivateRoutes } from "../PrivateRoutes";
 import { SettingsPage } from "../../pages/SettingsPage";
 import { BookEditPage } from "../../pages/BookEditPage";
+import { NewBookPage } from "../../pages/NewBookPage";
 
 export const RouterMain = () => {
   return (
@@ -24,6 +25,7 @@ export const RouterMain = () => {
       <Route element={<PrivateRoutes />}>
         <Route path="/user/settings" element={<SettingsPage />} />
         <Route path="/book/:bookId/edit" element={<BookEditPage />} />
+        <Route path="/book/new" element={<NewBookPage />} />
       </Route>
     </Routes>
   );

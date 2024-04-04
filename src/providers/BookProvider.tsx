@@ -51,6 +51,8 @@ export interface IBookContext {
   book: IBook | null;
   newRating: (data: DataRating) => void;
   patchBook: (data: IBookCreate) => void;
+  newBook: (data: IBookCreate) => void;
+  loading: boolean;
 }
 
 export const BookContext = createContext({} as IBookContext);
@@ -59,29 +61,38 @@ const BookProvider = ({ children }: ListProvaiderProps) => {
   const tokenLocal = localStorage.getItem("@TOKEN");
   const [books, setBooks] = useState<IBook[]>([]);
   const [book, setBook] = useState<IBook | null>(null);
+  const [loading, setLoading] = useState(false);
   const authHeader = { headers: { Authorization: `Bearer ${tokenLocal}` } };
+
   const navigate = useNavigate();
 
   const getBooks = async () => {
     try {
+      setLoading(true);
       const response = await bookAPI.get("books");
+      setLoading(false);
       setBooks(response.data);
     } catch (error) {
+      setLoading(false);
       toast.error("Algo deu errado, tente novamente mais tarde.");
       console.error(error);
     }
   };
   const getBook = async (bookId: string) => {
     try {
+      setLoading(true);
       const response = await bookAPI.get(`books/${bookId}`);
       setBook(response.data);
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       toast.error("Algo deu errado, tente novamente mais tarde.");
       console.error(error);
     }
   };
   const newRating = async (data: DataRating) => {
     try {
+      setLoading(true);
       await bookAPI.post(
         `books/${data.bookId}/assessments`,
         { rating: data.rating },
@@ -91,8 +102,10 @@ const BookProvider = ({ children }: ListProvaiderProps) => {
           },
         }
       );
+      setLoading(false);
       toast.success("Nota Adicionada com sucesso!");
     } catch (error) {
+      setLoading(false);
       toast.error("Algo deu errado, tente novamente mais tarde.");
       console.error(error);
     }
@@ -100,19 +113,43 @@ const BookProvider = ({ children }: ListProvaiderProps) => {
 
   const patchBook = async (payload: IBookCreate) => {
     try {
+      setLoading(true);
       const res = await bookAPI.patch(
         `books/${book?.id}`,
         {
           ...payload,
-          genres: payload.genres?.split(","),
+          genres: payload.genres?.trim().split(", "),
         },
         authHeader
       );
       toast.success("Livro atualizado com sucesso!");
+      setLoading(false);
       navigate(`/book/${res.data.id}`);
     } catch (error) {
+      setLoading(false);
       console.log(error);
       toast.error("Não foi possível atualizar o livro");
+    }
+  };
+
+  const newBook = async (payload: IBookCreate) => {
+    try {
+      setLoading(true);
+      const res = await bookAPI.post(
+        `books`,
+        {
+          ...payload,
+          genres: payload.genres?.trim().split(", "),
+        },
+        authHeader
+      );
+      setLoading(false);
+      toast.success("Livro criado com sucesso!");
+      navigate(`/book/${res.data.id}`);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+      toast.error("Não foi possível criar o livro");
     }
   };
 
@@ -125,6 +162,8 @@ const BookProvider = ({ children }: ListProvaiderProps) => {
         book,
         newRating,
         patchBook,
+        newBook,
+        loading,
       }}
     >
       {children}
