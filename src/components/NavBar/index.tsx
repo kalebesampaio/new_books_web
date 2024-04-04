@@ -32,7 +32,7 @@ export const NavBar = () => {
             <CiBookmark />
           </NavItem>
           <NavItem>
-            <Link to={"/"}>Configurações de usuário</Link>
+            <Link to={"/user/settings"}>Configurações de usuário</Link>
             <IoSettingsOutline />
           </NavItem>
           <NavItem>

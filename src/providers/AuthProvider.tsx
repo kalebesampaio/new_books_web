@@ -37,6 +37,7 @@ export interface IUserContext {
   setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
   registerUser: (data: IUserRegister) => void;
   logout: () => void;
+  patchUser: (data: IUserRegister) => void;
 }
 export interface IToken {
   iat: number;
@@ -56,6 +57,7 @@ export const AuthProvider = ({ children }: ListProvaiderProps) => {
   const navigate = useNavigate();
   const location = useLocation();
   const pathname = window.location.pathname;
+  const authHeader = { headers: { Authorization: `Bearer ${token}` } };
 
   useEffect(() => {
     const userId = localStorage.getItem("@USERID");
@@ -93,6 +95,24 @@ export const AuthProvider = ({ children }: ListProvaiderProps) => {
     }
   };
 
+  const patchUser = async (payload: IUserRegister) => {
+    const userId = localStorage.getItem("@USERID");
+    try {
+      await bookAPI.patch(`users/${userId}`, payload, authHeader);
+      const { data } = await bookAPI.get(`/users/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      toast.success("Usuário atualizado com sucesso!");
+      setUser(data);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      toast.error("Não foi possível atualizar o usuário");
+    }
+  };
+
   const signIn = async (data: DataLogin) => {
     try {
       const response = await bookAPI.post("login", data).catch((err) => {
@@ -106,7 +126,7 @@ export const AuthProvider = ({ children }: ListProvaiderProps) => {
 
       localStorage.setItem("@TOKEN", token);
       localStorage.setItem("@USERID", sub);
-      toast.success("Login realizado com sucesso!");
+
       const { data: dataRes } = await bookAPI.get(`users/${sub}`);
 
       setUser(dataRes);
@@ -114,6 +134,7 @@ export const AuthProvider = ({ children }: ListProvaiderProps) => {
       const toNavigate = location.state?.pathname || "/";
 
       navigate(toNavigate);
+      toast.success("Login realizado com sucesso!");
     } catch (error) {
       toast.error("Email ou senha inválida.");
     }
@@ -123,12 +144,21 @@ export const AuthProvider = ({ children }: ListProvaiderProps) => {
     setUser(null);
     setToken("");
     localStorage.removeItem("@TOKEN");
+    localStorage.removeItem("@USERID");
     navigate("/");
   };
 
   return (
     <AuthContext.Provider
-      value={{ signIn, user, loading, setUser, registerUser, logout }}
+      value={{
+        signIn,
+        user,
+        loading,
+        setUser,
+        registerUser,
+        logout,
+        patchUser,
+      }}
     >
       {children}
     </AuthContext.Provider>

@@ -6,6 +6,8 @@ import { BookPage } from "../../pages/BookPage";
 import { TypePage } from "../../pages/TypePage";
 import { GenresPage } from "../../pages/GenresPage";
 import { ViewsPage } from "../../pages/ViewsPage";
+import { PrivateRoutes } from "../PrivateRoutes";
+import { SettingsPage } from "../../pages/SettingsPage";
 
 export const RouterMain = () => {
   return (
@@ -17,6 +19,10 @@ export const RouterMain = () => {
       <Route path="/type" element={<TypePage />} />
       <Route path="/genres" element={<GenresPage />} />
       <Route path="/views" element={<ViewsPage />} />
+
+      <Route element={<PrivateRoutes />}>
+        <Route path="/user/settings" element={<SettingsPage />} />
+      </Route>
     </Routes>
   );
 };

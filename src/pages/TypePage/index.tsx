@@ -35,7 +35,7 @@ export const TypePage = () => {
         </TypeTitleDiv>
         <List>
           <Card title="Todos" change={setFilter} />
-          <Card title="Mangá" change={setFilter} />
+          <Card title="Manga" change={setFilter} />
           <Card title="Manhwa" change={setFilter} />
           <Card title="Manhua" change={setFilter} />
           <Card title="Conto" change={setFilter} />

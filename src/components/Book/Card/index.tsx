@@ -24,13 +24,13 @@ export const CardBook = ({ title, cover, type, id }: Props) => {
   return (
     <CardBookStyles>
       <div>
-        <Link to={`book/${id}`}>
+        <Link to={`/book/${id}`}>
           <img src={cover} alt="" />
         </Link>
-        <span>{type}</span>
+        <span className={`${type}`}>{type}</span>
       </div>
       <h3>
-        <Link to={`book/${id}`}>{title}</Link>
+        <Link to={`/book/${id}`}>{title}</Link>
       </h3>
     </CardBookStyles>
   );
@@ -46,13 +46,13 @@ export const AsideCardBook = ({
   return (
     <AsideCardBookStyles>
       <figure>
-        <Link to={`book/${id}`}>
+        <Link to={`/book/${id}`}>
           <img src={cover} alt="Capa do Livro" />
         </Link>
       </figure>
       <div>
         <h5>
-          <Link to={`book/${id}`}>{title}</Link>
+          <Link to={`/book/${id}`}>{title}</Link>
         </h5>
         <p>Views: {views}</p>
         <Rating name="read-only" value={reduceRating(assessments)} readOnly />
