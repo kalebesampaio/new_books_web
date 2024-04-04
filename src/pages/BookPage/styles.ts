@@ -23,6 +23,7 @@ export const ContainerBookTitle = styled.div`
   width: 100%;
   text-align: center;
   align-items: end;
+  justify-content: space-between;
   span {
     background-color: var(--random1);
     width: auto;
@@ -37,6 +38,23 @@ export const ContainerBookTitle = styled.div`
     margin-right: 7px;
     color: var(--whiteFixed);
     box-sizing: border-box;
+  }
+  a {
+    background-color: rgb(255 255 255 / 9%);
+    width: auto;
+    height: auto;
+    border-radius: 2px;
+    padding: 8px 8px 8px 8px;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 600;
+    text-align: center;
+    display: inline-block;
+    color: var(--whiteFixed);
+    box-sizing: border-box;
+  }
+  div {
+    display: flex;
   }
   .Manga {
     background-color: var(--random1);
