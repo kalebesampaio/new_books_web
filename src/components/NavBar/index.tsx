@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { ButtonNav, Flex, NavItem, NavList, NavbarStyler } from "./styles";
-import { CiBookmark } from "react-icons/ci";
 import { IoClose, IoSettingsOutline } from "react-icons/io5";
 import { IoMdLogOut, IoMdLogIn } from "react-icons/io";
 import { useMedia } from "use-media";
@@ -8,6 +7,7 @@ import { useContext, useState } from "react";
 import { MdMoreVert } from "react-icons/md";
 import { AuthContext } from "../../providers/AuthProvider";
 import { FaUserPlus } from "react-icons/fa6";
+import { FaBookOpen } from "react-icons/fa";
 
 export const NavBar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -28,8 +28,8 @@ export const NavBar = () => {
       ) : user ? (
         <NavList>
           <NavItem>
-            <Link to={"/"}>Meus Favoritos</Link>
-            <CiBookmark />
+            <Link to={"/book/new"}>Adicionar Livro</Link>
+            <FaBookOpen />
           </NavItem>
           <NavItem>
             <Link to={"/user/settings"}>Configurações de usuário</Link>
@@ -58,15 +58,15 @@ export const NavBar = () => {
           <Flex>
             <NavList>
               <NavItem>
-                <Link to={"/"}>Meus Favoritos</Link>
-                <CiBookmark />
+                <Link to={"/book/new"}>Adicionar Livro</Link>
+                <FaBookOpen />
               </NavItem>
               <NavItem>
-                <Link to={"/"}>Configurações de usuário</Link>
+                <Link to={"/user/settings"}>Configurações de usuário</Link>
                 <IoSettingsOutline />
               </NavItem>
               <NavItem>
-                <Link to={"/"}>Desconectar</Link>
+                <button onClick={() => logout()}>Desconectar</button>
                 <IoMdLogOut />
               </NavItem>
             </NavList>
