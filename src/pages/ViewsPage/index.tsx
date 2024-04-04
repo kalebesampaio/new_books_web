@@ -10,9 +10,10 @@ import { CardBook } from "../../components/Book/Card";
 import { useContext, useEffect } from "react";
 import { BookContext } from "../../providers/BookProvider";
 import { mostViewed } from "../../utils/mostViewed";
+import { Loading } from "../../components/Loading";
 
 export const ViewsPage = () => {
-  const { getBooks, books } = useContext(BookContext);
+  const { getBooks, books, loading } = useContext(BookContext);
   useEffect(() => {
     getBooks();
   }, []);
@@ -21,25 +22,31 @@ export const ViewsPage = () => {
       <Header />
       <NavBar />
       <ViewsPageStyles>
-        <ListBook>
-          <ListHeading>
-            <FaStar />
-            <Title1>Mais Visualizações</Title1>
-          </ListHeading>
-          {books ? (
-            mostViewed(books).map((book) => (
-              <CardBook
-                title={book.title}
-                type={book.type}
-                cover={book.cover}
-                key={book.id}
-                id={book.id}
-              />
-            ))
-          ) : (
-            <></>
-          )}
-        </ListBook>
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            <ListBook>
+              <ListHeading>
+                <FaStar />
+                <Title1>Mais Visualizações</Title1>
+              </ListHeading>
+              {books ? (
+                mostViewed(books).map((book) => (
+                  <CardBook
+                    title={book.title}
+                    type={book.type}
+                    cover={book.cover}
+                    key={book.id}
+                    id={book.id}
+                  />
+                ))
+              ) : (
+                <></>
+              )}
+            </ListBook>
+          </>
+        )}
       </ViewsPageStyles>
       <Footer />
     </>
