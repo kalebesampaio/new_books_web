@@ -19,13 +19,16 @@ import { useContext, useEffect, useState } from "react";
 import { FaComments } from "react-icons/fa6";
 import { FaBookmark, FaStar } from "react-icons/fa";
 import DisqusComments from "../../components/DisqusComments";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { BookContext } from "../../providers/BookProvider";
 import { reduceRating } from "../../utils/reduceRating";
+import { AuthContext } from "../../providers/AuthProvider";
 
 export const BookPage = () => {
   const { getBook, book, newRating } = useContext(BookContext);
+  const { user } = useContext(AuthContext);
   const [value, setValue] = useState<number>(0);
+  const [isOwner, setIsOwner] = useState<boolean>(false);
   const { bookId } = useParams();
   useEffect(() => {
     const get = async () => {
@@ -34,6 +37,13 @@ export const BookPage = () => {
     get();
     setValue(reduceRating(book?.assessments));
   }, []);
+  useEffect(() => {
+    if (book) {
+      if (book.user?.id === user?.id) {
+        setIsOwner(true);
+      }
+    }
+  }, [book]);
 
   return (
     <>
@@ -42,8 +52,11 @@ export const BookPage = () => {
       <BookPageStyles>
         <ContainerBookInfo>
           <ContainerBookTitle>
-            <span className={`${book?.type}`}>{book?.type}</span>
-            <h1>{book?.title}</h1>
+            <div>
+              <span className={`${book?.type}`}>{book?.type}</span>
+              <h1>{book?.title}</h1>
+            </div>
+            {isOwner ? <Link to={"edit"}>Editar</Link> : <></>}
           </ContainerBookTitle>
           <ContainerSummary>
             <SummaryImg>
