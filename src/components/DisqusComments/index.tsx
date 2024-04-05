@@ -2,14 +2,14 @@ import { DiscussionEmbed } from "disqus-react";
 
 interface Props {
   post: {
-    id: string;
+    id?: string;
     title: string;
   };
 }
 const DisqusComments = ({ post }: Props) => {
   const disqusShortname = "newbooks-1";
   const disqusConfig = {
-    url: "http://localhost:5173/",
+    url: `http://localhost:5173/books/${post.id}`,
     identifier: post.id,
     title: post.title,
   };

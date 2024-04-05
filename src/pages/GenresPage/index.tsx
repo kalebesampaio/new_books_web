@@ -11,9 +11,10 @@ import { Footer } from "../../components/Footer";
 import { useContext, useEffect, useState } from "react";
 import { BookContext } from "../../providers/BookProvider";
 import { Loading } from "../../components/Loading";
+import { ErroComponent } from "../../components/ErroComponent";
 
 export const GenresPage = () => {
-  const { getBooks, books, loading } = useContext(BookContext);
+  const { getBooks, books, loading, err } = useContext(BookContext);
   const [filter, setFilter] = useState<string>("");
   const [total, setTotal] = useState<number>(books.length);
   useEffect(() => {
@@ -34,6 +35,8 @@ export const GenresPage = () => {
       <GenresPageStyles>
         {loading ? (
           <Loading />
+        ) : err ? (
+          <ErroComponent></ErroComponent>
         ) : (
           <>
             <GenresTitleDiv>

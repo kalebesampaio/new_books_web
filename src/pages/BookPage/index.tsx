@@ -24,9 +24,10 @@ import { BookContext } from "../../providers/BookProvider";
 import { reduceRating } from "../../utils/reduceRating";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Loading } from "../../components/Loading";
+import { ErroComponent } from "../../components/ErroComponent";
 
 export const BookPage = () => {
-  const { getBook, book, newRating, loading } = useContext(BookContext);
+  const { getBook, book, newRating, loading, err } = useContext(BookContext);
   const { user } = useContext(AuthContext);
   const [value, setValue] = useState<number>(0);
   const [isOwner, setIsOwner] = useState<boolean>(false);
@@ -53,6 +54,8 @@ export const BookPage = () => {
       <BookPageStyles>
         {loading ? (
           <Loading />
+        ) : err ? (
+          <ErroComponent></ErroComponent>
         ) : (
           <>
             <ContainerBookInfo>
@@ -136,7 +139,7 @@ export const BookPage = () => {
       <DisqusContainer>
         <DisqusComments
           post={{
-            id: "dsq-count-scr",
+            id: `${book?.id}`,
             title: "New Books",
           }}
         />

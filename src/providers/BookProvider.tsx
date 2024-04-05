@@ -53,6 +53,7 @@ export interface IBookContext {
   patchBook: (data: IBookCreate) => void;
   newBook: (data: IBookCreate) => void;
   loading: boolean;
+  err: boolean;
 }
 
 export const BookContext = createContext({} as IBookContext);
@@ -62,6 +63,7 @@ const BookProvider = ({ children }: ListProvaiderProps) => {
   const [books, setBooks] = useState<IBook[]>([]);
   const [book, setBook] = useState<IBook | null>(null);
   const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState(false);
   const authHeader = { headers: { Authorization: `Bearer ${tokenLocal}` } };
 
   const navigate = useNavigate();
@@ -71,9 +73,11 @@ const BookProvider = ({ children }: ListProvaiderProps) => {
       setLoading(true);
       const response = await bookAPI.get("books");
       setLoading(false);
+      setErr(false);
       setBooks(response.data);
     } catch (error) {
       setLoading(false);
+      setErr(true);
       toast.error("Algo deu errado, tente novamente mais tarde.");
       console.error(error);
     }
@@ -83,9 +87,11 @@ const BookProvider = ({ children }: ListProvaiderProps) => {
       setLoading(true);
       const response = await bookAPI.get(`books/${bookId}`);
       setBook(response.data);
+      setErr(false);
       setLoading(false);
     } catch (error) {
       setLoading(false);
+      setErr(true);
       toast.error("Algo deu errado, tente novamente mais tarde.");
       console.error(error);
     }
@@ -103,9 +109,11 @@ const BookProvider = ({ children }: ListProvaiderProps) => {
         }
       );
       setLoading(false);
+      setErr(false);
       toast.success("Nota Adicionada com sucesso!");
     } catch (error) {
       setLoading(false);
+      setErr(true);
       toast.error("Algo deu errado, tente novamente mais tarde.");
       console.error(error);
     }
@@ -164,6 +172,7 @@ const BookProvider = ({ children }: ListProvaiderProps) => {
         patchBook,
         newBook,
         loading,
+        err,
       }}
     >
       {children}

@@ -10,6 +10,7 @@ export const TypePageStyles = styled.main`
   padding: 0px 1rem;
   max-width: 75rem;
   margin: 0px auto;
+  min-height: 70vh;
   ul {
     width: 100%;
     div {

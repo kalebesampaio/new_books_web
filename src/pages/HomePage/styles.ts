@@ -10,6 +10,7 @@ export const HomePageStyles = styled.main`
   padding: 0px 1rem;
   max-width: 75rem;
   margin: 0px auto;
+  min-height: 70vh;
   button,
   div {
     color: var(--grey9);
@@ -96,4 +97,8 @@ export const AsideFooter = styled.span`
     transition: background-color 200ms ease;
     cursor: pointer;
   }
+`;
+
+export const ParagraphErr = styled.h3`
+  color: var(--alert2);
 `;
