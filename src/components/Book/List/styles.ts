@@ -5,6 +5,7 @@ export const ListBookStyles = styled.ul`
   margin-top: 20px;
   margin-bottom: 50px;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 50px 50px;
 

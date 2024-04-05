@@ -76,6 +76,7 @@ export const BookPage = () => {
                       name="simple-controlled"
                       value={value}
                       onChange={(event, newValue) => {
+                        event.preventDefault();
                         setValue(newValue!);
                         newRating({ rating: newValue!, bookId: book!.id });
                       }}

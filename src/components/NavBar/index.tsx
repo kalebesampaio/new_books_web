@@ -54,23 +54,40 @@ export const NavBar = () => {
       )}
 
       {isWide ? (
-        open && (
-          <Flex>
-            <NavList>
-              <NavItem>
-                <Link to={"/book/new"}>Adicionar Livro</Link>
-                <FaBookOpen />
-              </NavItem>
-              <NavItem>
-                <Link to={"/user/settings"}>Configurações de usuário</Link>
-                <IoSettingsOutline />
-              </NavItem>
-              <NavItem>
-                <button onClick={() => logout()}>Desconectar</button>
-                <IoMdLogOut />
-              </NavItem>
-            </NavList>
-          </Flex>
+        open ? (
+          user ? (
+            <Flex>
+              <NavList>
+                <NavItem>
+                  <Link to={"/book/new"}>Adicionar Livro</Link>
+                  <FaBookOpen />
+                </NavItem>
+                <NavItem>
+                  <Link to={"/user/settings"}>Configurações de usuário</Link>
+                  <IoSettingsOutline />
+                </NavItem>
+                <NavItem>
+                  <button onClick={() => logout()}>Desconectar</button>
+                  <IoMdLogOut />
+                </NavItem>
+              </NavList>
+            </Flex>
+          ) : (
+            <Flex>
+              <NavList>
+                <NavItem>
+                  <Link to={"/login"}>Login</Link>
+                  <IoMdLogIn />
+                </NavItem>
+                <NavItem>
+                  <Link to={"/register"}>Cadastrar</Link>
+                  <FaUserPlus />
+                </NavItem>
+              </NavList>
+            </Flex>
+          )
+        ) : (
+          <></>
         )
       ) : (
         <> </>
