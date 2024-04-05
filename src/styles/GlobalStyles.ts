@@ -6,12 +6,18 @@ export default createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         outline: 0;
+        list-style: none;
+        font-family: "IBM Plex Sans", sans-serif;
+        scroll-behavior: smooth;
     }
 
     :root{
+        --brand1: #623CEA;
+        --brand2: #311E75;
+        --brand3: #040c30;
         --grey0: #0B0D0D;
-        --grey1: #212529;
-        --grey2: #495057;
+        --grey1: #121214;
+        --grey2: #212529;
         --grey3: #868E96;
         --grey4: #ADB5BD;
         --grey5: #CED4DA;
@@ -20,6 +26,8 @@ export default createGlobalStyle`
         --grey8: #F1F3F5;
         --grey9: #F8F9FA;
         --grey10: #FDFDFD;
+        --grey11: #7b7b7b;
+        --grey12: #cccccc;
         --whiteFixed: #FFFFFF;
 
         --alert1: #CD2B31;
@@ -43,6 +51,10 @@ export default createGlobalStyle`
         --random11: #5700E3;
         --random12: #30007D; 
     }
+    body{
+        background-color: var(--grey1);
+       
+    }
 
     button {
         cursor: pointer;
@@ -57,12 +69,6 @@ export default createGlobalStyle`
         text-decoration: none;
     }
 
-    ul {
-        list-style: none;
-    }
-
-    main {
-        margin-top: 80px;
-    }
+ 
 
 `;
