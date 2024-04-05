@@ -9,7 +9,7 @@ interface Props {
 const DisqusComments = ({ post }: Props) => {
   const disqusShortname = "newbooks-1";
   const disqusConfig = {
-    url: `https://new-books-brg0f49ac-kalebesampaios-projects.vercel.app/book/${post.id}`,
+    url: `https://new-books-web.vercel.app/book/${post.id}`,
     identifier: post.id,
     title: post.title,
   };
