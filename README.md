@@ -11,3 +11,5 @@ Link do deploy: https://new-books-web.vercel.app/
 Para roda o projeto:
 
 `npm run dev`
+
+link local: http://localhost:5173/
