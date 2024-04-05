@@ -10,6 +10,7 @@ export const BookPageStyles = styled.main`
   padding: 0px 1rem;
   max-width: 75rem;
   margin: 0px auto;
+  min-height: 75vh;
 `;
 
 export const ContainerBookInfo = styled.section`

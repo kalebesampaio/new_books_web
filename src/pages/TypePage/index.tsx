@@ -11,9 +11,10 @@ import { CardBook } from "../../components/Book/Card";
 import { useContext, useEffect, useState } from "react";
 import { BookContext } from "../../providers/BookProvider";
 import { Loading } from "../../components/Loading";
+import { ErroComponent } from "../../components/ErroComponent";
 
 export const TypePage = () => {
-  const { getBooks, books, loading } = useContext(BookContext);
+  const { getBooks, books, loading, err } = useContext(BookContext);
   const [filter, setFilter] = useState<string>("");
   const [total, setTotal] = useState<number>(books.length);
   useEffect(() => {
@@ -33,6 +34,8 @@ export const TypePage = () => {
       <TypePageStyles>
         {loading ? (
           <Loading />
+        ) : err ? (
+          <ErroComponent></ErroComponent>
         ) : (
           <>
             <TypeTitleDiv>

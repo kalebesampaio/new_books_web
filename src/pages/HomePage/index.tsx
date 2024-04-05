@@ -22,9 +22,10 @@ import { pageFunc } from "../../utils/pageFunc";
 import { numberPage } from "../../utils/numberPage";
 import { mostViewed } from "../../utils/mostViewed";
 import { Loading } from "../../components/Loading";
+import { ErroComponent } from "../../components/ErroComponent";
 
 export const HomePage = () => {
-  const { getBooks, books, loading } = useContext(BookContext);
+  const { getBooks, books, loading, err } = useContext(BookContext);
   const [sli, setSli] = useState<number[]>([0, 12]);
 
   useEffect(() => {
@@ -38,6 +39,8 @@ export const HomePage = () => {
       <HomePageStyles>
         {loading ? (
           <Loading />
+        ) : err ? (
+          <ErroComponent></ErroComponent>
         ) : (
           <HomeContainer>
             <ListBook>

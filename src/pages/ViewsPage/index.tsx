@@ -11,9 +11,10 @@ import { useContext, useEffect } from "react";
 import { BookContext } from "../../providers/BookProvider";
 import { mostViewed } from "../../utils/mostViewed";
 import { Loading } from "../../components/Loading";
+import { ErroComponent } from "../../components/ErroComponent";
 
 export const ViewsPage = () => {
-  const { getBooks, books, loading } = useContext(BookContext);
+  const { getBooks, books, loading, err } = useContext(BookContext);
   useEffect(() => {
     getBooks();
   }, []);
@@ -24,6 +25,8 @@ export const ViewsPage = () => {
       <ViewsPageStyles>
         {loading ? (
           <Loading />
+        ) : err ? (
+          <ErroComponent></ErroComponent>
         ) : (
           <>
             <ListBook>

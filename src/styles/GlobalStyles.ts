@@ -52,7 +52,6 @@ export default createGlobalStyle`
         --random12: #30007D; 
     }
     body{
-        min-height: 100vh;
         background-color: var(--grey1);
        
     }
